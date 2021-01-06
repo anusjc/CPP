@@ -12,9 +12,9 @@ int main()
         vector<ll> a, b;
         for (ll i = 0; i < n; i++)
         {
-            ll m;
-            cin >> m;
-            a.push_back(m);
+            ll l;
+            cin >> l;
+            a.push_back(l);
         }
         for (ll i = 0; i < m; i++)
         {
@@ -32,25 +32,29 @@ int main()
         {
             cout << 0 << "\n";
         }
-        ll i = 0, j = 0;
-        while (s1 < s2 and i < n and j < m)
-        {
-            s1 -= a[i];
-            s1 += b[j];
-            s2 -= a[j];
-            s2 += a[i];
-            i++;
-            j++;
-            cnt++;
-        }
-        if (s1 < s2)
-        {
-            cout << "-1"
-                 << "\n";
-        }
         else
         {
-            cout << cnt << "\n";
+            ll i = 0, j = 0;
+            while (s1 <= s2 and i < n and j < m)
+            {
+                s1 += b[j];
+                s1 -= a[i];
+                s2 += a[i];
+                s2 -= b[j];
+                i++;
+                j++;
+                cnt++;
+            }
+            if (s1 <= s2)
+            {
+                cout << "-1"
+                     << "\n";
+            }
+            else
+            {
+                cout << cnt << "\n";
+            }
         }
     }
+    return 0;
 }
