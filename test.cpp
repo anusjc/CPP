@@ -1,78 +1,21 @@
-// CPP program to check for balanced parenthesis. 
-#include<bits/stdc++.h> 
-using namespace std; 
-  
-// function to check if paranthesis are balanced 
-bool areParanthesisBalanced(string expr) 
-{ 
-    stack<char> s; 
-    char x; 
-  
-    // Traversing the Expression 
-    for (int i=0; i<expr.length(); i++) 
-    { 
-        if (expr[i]=='('||expr[i]=='['||expr[i]=='{') 
-        { 
-            // Push the element in the stack 
-            s.push(expr[i]); 
-            continue; 
-        } 
-  
-        // IF current current character is not opening 
-        // bracket, then it must be closing. So stack 
-        // cannot be empty at this point. 
-        if (s.empty()) 
-           return false; 
-  
-        switch (expr[i]) 
-        { 
-        case ')': 
-  
-            // Store the top element in a 
-            x = s.top(); 
-            s.pop(); 
-            if (x=='{' || x=='[') 
-                return false; 
-            break; 
-  
-        case '}': 
-  
-            // Store the top element in b 
-            x = s.top(); 
-            s.pop(); 
-            if (x=='(' || x=='[') 
-                return false; 
-            break; 
-  
-        case ']': 
-  
-            // Store the top element in c 
-            x = s.top(); 
-            s.pop(); 
-            if (x =='(' || x == '{') 
-                return false; 
-            break; 
-        } 
-    } 
-  
-    // Check Empty Stack 
-    return (s.empty()); 
-} 
-  
-// Driver program to test above function 
-int main() 
-{ 
-     int n;
-    string expr;
-    cin>>n;
-    for(int j=0;j<n;j++)
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main()
+{
+    priority_queue<int, vector<int>, greater<int>> p;
+    ll n;
+    cin >> n;
+    while (n--)
     {
-      
-      cin>>expr;
-      if(areParanthesisBalanced(expr)) 
-        cout << "YES"<<endl; 
-      else
-        cout << "NO"<<endl; 
+        ll m;
+        cin >> m;
+        p.push(m);
     }
-    return 0;
-} 
+
+    while (p.empty() == false)
+    {
+        cout << p.top() << " ";
+        p.pop(); /* code */
+    }
+}
